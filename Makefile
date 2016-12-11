@@ -14,6 +14,7 @@ SRC = checkbuf.c\
 		ft_strcmp_f.c\
 		putref.c\
 		ft_lstaddback.c\
+		ft_minos.c\
 
 OBJ = $(SRC:.c=.o)
 

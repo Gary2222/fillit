@@ -10,17 +10,30 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-t_minos			ft_minos(int ref)
-{
-	t_minos		mino;
+#include "fillit.h"
 
-	mino->x1 = g_coord[ref][0];
-	mino->y1 = g_coord[ref][1];
-	mino->x2 = g_coord[ref][2];
-	mino->y2 = g_coord[ref][3];
-	mino->x3 = g_coord[ref][4];
-	mino->y3 = g_coord[ref][5];
-	mino->x4 = g_coord[ref][6];
-	mino->y4 = g_coord[ref][7];
-	return (mino);
+int			ft_minos(char *file)
+{
+	int		retread;
+	int		tmp;
+	char	buf[21 + 1];
+	int 	fd;
+	int		tab[27];
+	int		i;
+
+	i = 0;
+	if (!(fd = open(file, O_RDONLY)))
+		return (-1);
+	while (retread = (read(fd, &buf, 21)))
+	{
+		if ((tab[i] = checkbuf(buf)) == -1)
+			return (-1);
+		i++;
+		tmp = retread;
+		ft_bzero(buf, 22);
+	}
+	tab[i] = 42;
+	if (tmp != 20)
+		return (-1);
+	return (1);	
 }
